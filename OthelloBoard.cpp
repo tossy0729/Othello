@@ -46,8 +46,9 @@ void OthelloBoard::turn(int x,int y, int b)
         revcolor = BLACK;
     }
     if(m_boad[x][y] == SPACE){//指定された座標が空白なら以下の処理をする
-            m_boad[x][y] = color;//指定された座標を手番の色にする
-            int a = -1;//フラグ
+        m_boad[x][y] = color;//指定された座標を手番の色にする
+        int a = -1;//フラグ
+        if(x<8){//xが右端でなければ
             for(int i=x+1;i<WD;++i){//右側について調べる
                 if(m_boad[i][y] == revcolor && a == -1) continue;//もし、revcolorが続いていたらループを続ける
                 else if(m_boad[i][y] == color && a == -1){//もし、revが続いてきて、colorが現れたら、その座標を覚える
@@ -62,6 +63,55 @@ void OthelloBoard::turn(int x,int y, int b)
                 }
             }
             a = -1;
+        }
+        if(x>=1){//xが左橋でなければ
+            for(int i=x-1;i>=0;--i){//左側について調べる
+                if(m_boad[i][y] == revcolor && a == -1) continue;//もし、revcolorが続いていたらループを続ける
+                else if(m_boad[i][y] == color && a == -1){//もし、revが続いてきて、colorが現れたら、その座標を覚える
+                    a = i;
+                    break;
+                } 
+                else break;//それ以外ならループを終了する
+            }
+            if(a != -1){//ひっくり返す部分が存在する(aが-1でないなら)ひっくり返す操作を行う
+                for(int i=x-1;i>=a;--i){
+                    m_boad[i][y] = color;
+                }
+            }
+            a = -1;
+        }
+        if(y<8){//yが一番下でなければ
+            for(int i=y+1;i<HT;++i){//下側について調べる
+                if(m_boad[x][i] == revcolor && a == -1) continue;//もし、revcolorが続いていたらループを続ける
+                else if(m_boad[x][i] == color && a == -1){//もし、revが続いてきて、colorが現れたら、その座標を覚える
+                    a = i;
+                    break;
+                } 
+                else break;//それ以外ならループを終了する
+            }
+            if(a != -1){//ひっくり返す部分が存在する(aが-1でないなら)ひっくり返す操作を行う
+                for(int i=y+1;i<=a;++i){
+                    m_boad[x][i] = color;
+                }
+            }
+            a = -1;
+        }
+        if(y>=1){//xが左橋でなければ
+            for(int i=y-1;i>=0;--i){//左側について調べる
+                if(m_boad[x][i] == revcolor && a == -1) continue;//もし、revcolorが続いていたらループを続ける
+                else if(m_boad[x][i] == color && a == -1){//もし、revが続いてきて、colorが現れたら、その座標を覚える
+                    a = i;
+                    break;
+                } 
+                else break;//それ以外ならループを終了する
+            }
+            if(a != -1){//ひっくり返す部分が存在する(aが-1でないなら)ひっくり返す操作を行う
+                for(int i=y-1;i>=a;--i){
+                    m_boad[x][i] = color;
+                }
+            }
+            a = -1;
+        }
     }
 }
 
