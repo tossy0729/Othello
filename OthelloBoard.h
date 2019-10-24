@@ -25,4 +25,5 @@ class OthelloBoard
         }
         void print() const;
         void turn( int x, int y, int* b);
+        bool check() const;
 };
