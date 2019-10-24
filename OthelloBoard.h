@@ -24,5 +24,5 @@ class OthelloBoard
             m_boad[3][3] = m_boad[4][4] = WHITE;
         }
         void print() const;
-        void turn( int x, int y, int a);
+        void turn( int x, int y, int* b);
 };
