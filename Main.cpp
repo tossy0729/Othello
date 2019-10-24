@@ -15,9 +15,10 @@ int main(){
             else cout << "白の手番です" << endl;
 
             cout << "２つの数字(x,y)を入力してください" << endl;
-            cout << "終了する場合は10 10と入力してください" << endl;
+            cout << "終了する場合は10 10,パスの場合は22 22と入力してください" << endl;
             int x,y; cin >> x >> y;
             if(x == 10 && y == 10) fin = true;//finをtrueにする
+            else if(x == 22 && y == 22) continue;
             else if(x>8 || y>8) {
                 b--;
                 cout << "正しい値を入力してください" << endl;
