@@ -209,8 +209,8 @@ bool OthelloBoard::check() const //盤面の状態をチェックする
         if(white == 0) cout << "黒の勝ちです" << endl;
         else if(black == 0) cout << "白の勝ちです" << endl;
         else{
-            if(white > black) cout << "白の勝ちです" << endl;
-            else if(black > white) cout << "黒の勝ちです" << endl;
+            if(white > black) cout << "白の" << white-black <<  "石勝ちです" << endl;
+            else if(black > white) cout << "黒の" << black-white << "石勝ちです" << endl;
             else cout << "引き分けです" << endl;
         }
     }
